@@ -8,3 +8,52 @@
 main {
   flex: 1;
 }
+
+.toast-notification {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: var(--primary);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.toast-notification::before {
+  content: '✓';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: var(--secondary);
+  border-radius: 50%;
+  font-size: 12px;
+  color: white;
+}
+
+.toast-notification.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .toast-notification {
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    text-align: center;
+    justify-content: center;
+  }
+}
+

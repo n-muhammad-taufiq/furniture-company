@@ -3,13 +3,25 @@ import sofaImg from '../assets/product_sofa.png';
 import tableImg from '../assets/product_table.png';
 import chairImg from '../assets/product_chair.png';
 
-const products = [
-  { id: 1, name: 'Bouclé Cloud Sofa', category: 'Seating', price: '$1,400', image: sofaImg },
-  { id: 2, name: 'Oak dining Table', category: 'Dining', price: '$950', image: tableImg },
-  { id: 3, name: 'Charcoal Lounge', category: 'Seating', price: '$620', image: chairImg },
+export interface Product {
+  id: number;
+  name: string;
+  category: string;
+  price: string;
+  image: string;
+}
+
+const products: Product[] = [
+  { id: 1, name: 'Bouclé Cloud Sofa', category: 'Seating', price: '₹1,15,000', image: sofaImg },
+  { id: 2, name: 'Oak dining Table', category: 'Dining', price: '₹75,500', image: tableImg },
+  { id: 3, name: 'Charcoal Lounge', category: 'Seating', price: '₹55,000', image: chairImg },
 ];
 
-const ProductGrid = () => {
+interface ProductGridProps {
+  onAddToCart: (product: Product) => void;
+}
+
+const ProductGrid = ({ onAddToCart }: ProductGridProps) => {
   return (
     <section className="products-section section-padding" id="collections">
       <div className="container">
@@ -27,7 +39,9 @@ const ProductGrid = () => {
               <div className="product-img-box">
                 <img src={product.image} alt={product.name} className="product-img" />
                 <div className="product-hover-overlay">
-                  <button className="quick-add-btn">Quick Add</button>
+                  <button className="quick-add-btn" onClick={() => onAddToCart(product)}>
+                    Quick Add
+                  </button>
                 </div>
               </div>
               <div className="product-meta">

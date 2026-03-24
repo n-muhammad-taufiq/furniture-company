@@ -1,7 +1,7 @@
 import './Features.css';
 
 const featuresList = [
-  { title: 'Free Shipping', desc: 'On orders over $500' },
+  { title: 'Free Shipping', desc: 'On orders over ₹50,000' },
   { title: 'Secure Payment', desc: '100% secure checkout' },
   { title: '30 Days Return', desc: 'Money back guarantee' },
   { title: '24/7 Support', desc: 'Dedicated team' },

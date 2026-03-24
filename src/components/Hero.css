@@ -1,39 +1,23 @@
 .hero-section {
   position: relative;
-  height: 100vh;
-  min-height: 700px;
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--bg-main);
+  padding-top: 80px; /* Offset for fixed header */
+}
+
+.hero-split-container {
+  display: flex;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.hero-content-side {
+  flex: 1;
   display: flex;
   align-items: center;
-}
-
-.hero-bg-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(250,250,250,0.9) 0%, rgba(250,250,250,0.4) 60%, rgba(250,250,250,0) 100%);
-}
-
-.hero-container {
-  position: relative;
-  z-index: 2;
+  padding: 60px 5% 60px 10%;
 }
 
 .hero-content {
@@ -42,28 +26,30 @@
 
 .hero-tagline {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 2.5px;
   color: var(--secondary);
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 24px;
 }
 
 .hero-title {
-  font-size: 72px;
+  font-size: 80px;
   line-height: 1.1;
   color: var(--primary);
   margin-bottom: 24px;
-  letter-spacing: -2px;
+  letter-spacing: -2.5px;
+  font-weight: 600;
 }
 
 .hero-description {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-muted);
-  line-height: 1.7;
+  line-height: 1.8;
   margin-bottom: 40px;
   font-weight: 300;
+  max-width: 90%;
 }
 
 .hero-actions {
@@ -71,12 +57,44 @@
   gap: 16px;
 }
 
+.hero-btn-outline {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+.hero-btn-outline:hover {
+  background-color: var(--primary) !important;
+  color: var(--bg-white) !important;
+}
+
+.hero-image-side {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-img-split {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 @media (max-width: 900px) {
-  .hero-title {
-    font-size: 48px;
+  .hero-split-container {
+    flex-direction: column;
   }
   
-  .hero-overlay {
-    background: linear-gradient(0deg, rgba(250,250,250,0.95) 0%, rgba(250,250,250,0.7) 100%);
+  .hero-content-side {
+    padding: 80px 5%;
+  }
+
+  .hero-title {
+    font-size: 56px;
+  }
+
+  .hero-image-side {
+    min-height: 50vh;
   }
 }
+

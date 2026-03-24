@@ -1,12 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchIcon, UserIcon, CartIcon, MenuIcon } from './Icons';
 import './Header.css';
 
-const Header = () => {
+interface HeaderProps {
+  cartCount: number;
+  onOpenCart: () => void;
+}
+
+const Header = ({ cartCount, onOpenCart }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [animateCart, setAnimateCart] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (cartCount > 0) {
+      setAnimateCart(true);
+      const timer = setTimeout(() => setAnimateCart(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [cartCount]);
 
   return (
-    <header className="header">
+    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
         
         <button className="mobile-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -16,8 +39,8 @@ const Header = () => {
         <nav className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
           <ul className="nav-list left-nav">
             <li><a href="#home" className="nav-link">Home</a></li>
-            <li><a href="#shop" className="nav-link">Shop</a></li>
-            <li><a href="#collections" className="nav-link">Collections</a></li>
+            <li><a href="#collections" className="nav-link">Shop</a></li>
+            <li><a href="#categories" className="nav-link">Rooms</a></li>
           </ul>
         </nav>
 
@@ -33,9 +56,9 @@ const Header = () => {
           <div className="action-icons">
             <button aria-label="Search" className="icon-btn"><SearchIcon /></button>
             <button aria-label="Account" className="icon-btn"><UserIcon /></button>
-            <button aria-label="Cart" className="icon-btn has-badge">
+            <button aria-label="Cart" className={`icon-btn has-badge ${animateCart ? 'bubble-bounce' : ''}`} onClick={onOpenCart}>
               <CartIcon />
-              <span className="cart-badge">0</span>
+              <span className="cart-badge">{cartCount}</span>
             </button>
           </div>
         </div>

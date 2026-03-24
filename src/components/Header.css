@@ -1,11 +1,28 @@
 .header {
   padding: 24px 0;
-  background-color: transparent;
-  position: absolute;
+  background-color: var(--bg-main);
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 1000;
   border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+  padding: 16px 0;
+  box-shadow: var(--shadow-sm);
+  border-bottom: none;
+}
+
+.bubble-bounce {
+  animation: bubbleBounce 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bubbleBounce {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.2); }
+  100% { transform: scale(1); }
 }
 
 .header-container {
