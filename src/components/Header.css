@@ -1,0 +1,154 @@
+.header {
+  padding: 24px 0;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-menu {
+  flex: 1;
+}
+
+.logo-container {
+  flex: 1;
+  text-align: center;
+}
+
+.logo-text {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.header-actions {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 13px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.action-icons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.icon-btn {
+  background: transparent;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:hover {
+  opacity: 0.6;
+}
+
+.has-badge {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: var(--secondary);
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+}
+
+/* Mobile responsive */
+@media (max-width: 900px) {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+    flex: 1;
+    text-align: left;
+  }
+  
+  .logo-container {
+    flex: 2;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-white);
+    padding: 20px 0;
+    flex-direction: column;
+    display: none;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+  }
+  
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

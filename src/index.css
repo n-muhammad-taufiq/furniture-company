@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap');
+
+:root {
+  --primary: #222222; /* Charcoal */
+  --primary-hover: #000000;
+  --secondary: #D2B48C; /* Warm Taupe / Beige */
+  --secondary-hover: #b59b77;
+  --text-dark: #1A1A1A;
+  --text-muted: #737373;
+  --text-light: #FFFFFF;
+  --bg-main: #FAFAFA; /* Off-white body */
+  --bg-white: #FFFFFF;
+  --bg-subtle: #F2F0EB; /* Earthy cream */
+  --border-color: #E2E2E2;
+  
+  --font-serif: 'Lora', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.04);
+  --shadow-lg: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text-dark);
+  background-color: var(--bg-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  color: var(--primary);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilities */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border-radius: 0; /* Sharp, modern minimalist edges */
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary);
+}
+
+.btn-secondary {
+  background-color: var(--bg-subtle);
+  color: var(--primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-color);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary);
+  color: var(--text-light);
+}
